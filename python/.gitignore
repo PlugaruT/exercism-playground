@@ -10,3 +10,4 @@ bin/configlet.exe
 .cache
 __pycache__
 .pytest_cache/
+.vscode/
