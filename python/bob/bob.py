@@ -18,7 +18,7 @@ def hey(phrase: str) -> str:
         return "Whoa, chill out!"
     elif is_question(phrase):
         return "Sure."
-    elif phrase == "":
+    elif not phrase:
         return "Fine. Be that way!"
     else:
         return "Whatever."
