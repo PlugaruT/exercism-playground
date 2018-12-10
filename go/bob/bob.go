@@ -12,11 +12,11 @@ func isUpper(str string) bool {
 }
 
 func isBlank(str string) bool {
-	return sanitize(str) == ""
+	return str == ""
 }
 
 func isQuestion(str string) bool {
-	return strings.HasSuffix(sanitize(str), "?")
+	return strings.HasSuffix(str, "?")
 }
 
 func isYelledSentence(str string) bool {
@@ -29,6 +29,7 @@ func isYelledQuestion(str string) bool {
 
 // Hey simulates Bob, the lackadaisical teenager
 func Hey(remark string) string {
+	remark = sanitize(remark)
 	switch {
 	case isYelledSentence(remark):
 		return "Whoa, chill out!"
