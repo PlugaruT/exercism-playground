@@ -1,31 +1,42 @@
 package scrabble
 
-import "strings"
+import "unicode"
 
-type point struct {
-	letters string
-	value   int
-}
-
-var scrabbleValues = []point{
-	{"aeioulnrst", 1},
-	{"dg", 2},
-	{"bcmp", 3},
-	{"fhvwy", 4},
-	{"k", 5},
-	{"jx", 8},
-	{"qz", 10},
+var scrabbleValues = map[rune]int{
+	'a': 1,
+	'e': 1,
+	'i': 1,
+	'o': 1,
+	'u': 1,
+	'l': 1,
+	'n': 1,
+	'r': 1,
+	's': 1,
+	't': 1,
+	'd': 2,
+	'g': 2,
+	'b': 3,
+	'c': 3,
+	'm': 3,
+	'p': 3,
+	'f': 4,
+	'h': 4,
+	'v': 4,
+	'w': 4,
+	'y': 4,
+	'k': 5,
+	'j': 8,
+	'x': 8,
+	'q': 10,
+	'z': 10,
 }
 
 // Score computes the scrabble score for that word.
 func Score(s string) int {
 	var score int
 	for _, r := range s {
-		c := strings.ToLower(string(r))
-		for _, rule := range scrabbleValues {
-			if strings.ContainsAny(rule.letters, c) {
-				score += rule.value
-			}
+		if val, ok := scrabbleValues[unicode.ToLower(r)]; ok {
+			score += val
 		}
 	}
 	return score
