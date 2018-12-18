@@ -35,9 +35,7 @@ var scrabbleValues = map[rune]int{
 func Score(s string) int {
 	var score int
 	for _, r := range s {
-		if val, ok := scrabbleValues[unicode.ToLower(r)]; ok {
-			score += val
-		}
+		score += scrabbleValues[unicode.ToLower(r)]
 	}
 	return score
 }
